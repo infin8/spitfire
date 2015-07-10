@@ -12,7 +12,7 @@ class Template(object):
         self.tmp = None
 
     def __call__(self, namespaces=[], *args, **kwargs):
-        if self.tmp is None:
+        if not hasattr(self.tmp, 'template'):
             self.compile()
 
         return self.tmp.template(search_list=namespaces).main()
